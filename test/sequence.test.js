@@ -3,11 +3,11 @@ const { lookAndSay, counter } = require('../lookAndSay');
 describe('counter', () => {
 
   it('[1,1,2], 1 must return [2, 1]', () => {
-    expect(counter([1, 1, 2], 1)).toEqual([2, 1]);
+    expect(counter([1, 1, 2], 1)).toEqual(2);
   });
 
   it('[2,1,2], 2 must return [2, 1]', () => {
-    expect(counter([2, 1, 2], 2)).toEqual([1, 2]);
+    expect(counter([2, 1, 2], 2)).toEqual(1);
   });
 });
 
@@ -26,7 +26,7 @@ describe('sequence', () => {
     expect(result).toEqual(expected);
   });
 
-  it.only('21 is read off as "one 2, then one 1" or 1211', () => {
+  it('21 is read off as "one 2, then one 1" or 1211', () => {
     const input = '21';
     const expected = '1211';
     const result = lookAndSay(input);
@@ -36,6 +36,13 @@ describe('sequence', () => {
   it('111221 is read off as "three 1s, two 2s, then one 1" or 312211', () => {
     const input = '111221';
     const expected = '312211';
+    const result = lookAndSay(input);
+    expect(result).toEqual(expected);
+  });
+
+  it('31131122211 a expect', () => {
+    const input = '31131122211';
+    const expected = '132113213221';
     const result = lookAndSay(input);
     expect(result).toEqual(expected);
   });

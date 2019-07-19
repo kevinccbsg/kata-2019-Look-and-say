@@ -1,6 +1,5 @@
 
 const counter = (array, value) => {
-  console.log(array, value);
   let acum = 0;
   for (let i = 0; i < array.length; i++) {
     if (array[i] === value) {
@@ -9,15 +8,17 @@ const counter = (array, value) => {
       break;
     }
   }
-  return [acum, value];
+  return acum;
 };
 
 const lookAndSay = input => {
   const numbers = input.split('');
-  let count = 0;
+  let copyNumbers = [...numbers];
   return numbers.reduce((acum, number, index) => {
-    acum = acum.concat(counter(numbers, number));
-    numbers.splice(index, 1);
+    const count = counter(copyNumbers, number);
+    if (!count) acum = acum.concat([]);
+    else acum = acum.concat([count, number]);
+    copyNumbers.splice(0, count);
     return acum;
   }, []).join('');
 };
