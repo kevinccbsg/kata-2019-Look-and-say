@@ -1,4 +1,5 @@
 const { lookAndSay, counter } = require('../lookAndSay');
+const sequence = require('..');
 
 describe('counter', () => {
 
@@ -11,7 +12,7 @@ describe('counter', () => {
   });
 });
 
-describe('sequence', () => {
+describe('lookAndSay', () => {
   it('1 is read off as "one 1" or 11', () => {
     const input = '1';
     const expected = '11';
@@ -40,10 +41,19 @@ describe('sequence', () => {
     expect(result).toEqual(expected);
   });
 
-  it('31131122211 a expect', () => {
+  it('31131122211 a expect 132113213221', () => {
     const input = '31131122211';
     const expected = '132113213221';
     const result = lookAndSay(input);
     expect(result).toEqual(expected);
   });
+});
+
+describe('sequence', () => {
+  it('1 expected ', () => {
+    const seed = 1;
+    const count = 4;
+    const result = sequence(seed, count);
+    expect(result).toEqual('1, 11, 21, 1211');
+  })
 });
