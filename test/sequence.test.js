@@ -1,4 +1,15 @@
-const lookAndSay = require('../lookAndSay');
+const { lookAndSay, counter } = require('../lookAndSay');
+
+describe('counter', () => {
+
+  it('[1,1,2], 1 must return [2, 1]', () => {
+    expect(counter([1, 1, 2], 1)).toEqual([2, 1]);
+  });
+
+  it('[2,1,2], 2 must return [2, 1]', () => {
+    expect(counter([2, 1, 2], 2)).toEqual([1, 2]);
+  });
+});
 
 describe('sequence', () => {
   it('1 is read off as "one 1" or 11', () => {
@@ -15,11 +26,8 @@ describe('sequence', () => {
     expect(result).toEqual(expected);
   });
 
-  it('21 is read off as "one 2, then one 1" or 1211', () => {
+  it.only('21 is read off as "one 2, then one 1" or 1211', () => {
     const input = '21';
-    [2, 1] // numbers
-    [true, false] // groups
-    2 // number
     const expected = '1211';
     const result = lookAndSay(input);
     expect(result).toEqual(expected);

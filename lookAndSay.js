@@ -1,5 +1,6 @@
 
 const counter = (array, value) => {
+  console.log(array, value);
   let acum = 0;
   for (let i = 0; i < array.length; i++) {
     if (array[i] === value) {
@@ -14,11 +15,11 @@ const counter = (array, value) => {
 const lookAndSay = input => {
   const numbers = input.split('');
   let count = 0;
-  return numbers.reduce((acum, number) => {
+  return numbers.reduce((acum, number, index) => {
     acum = acum.concat(counter(numbers, number));
-    numbers.shift();
+    numbers.splice(index, 1);
     return acum;
   }, []).join('');
 };
 
-module.exports = lookAndSay;
+module.exports = { lookAndSay, counter };
